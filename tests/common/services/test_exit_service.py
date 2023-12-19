@@ -1,7 +1,7 @@
 from unittest.mock import AsyncMock, create_autospec
 
 import pytest
-from asockit import SocketReader
+from asockit import SocketReader, SocketWriter
 
 from src.tuicub.common.models import Keybind
 from src.tuicub.common.services.exit_service import ExitService
@@ -14,9 +14,16 @@ def socket_reader() -> SocketReader:
 
 
 @pytest.fixture()
-def sut(socket_reader, confirmation_service) -> ExitService:
+def socket_writer() -> SocketWriter:
+    return create_autospec(SocketWriter)
+
+
+@pytest.fixture()
+def sut(socket_reader, socket_writer, confirmation_service) -> ExitService:
     return ExitService(
-        confirmation_service=confirmation_service, socket_reader=socket_reader
+        confirmation_service=confirmation_service,
+        socket_reader=socket_reader,
+        socket_writer=socket_writer,
     )
 
 
@@ -49,6 +56,15 @@ class TestExitApp:
 
         socket_reader.stop.assert_awaited_once()
 
+    async def test_when_confirmed__closes_socket_writer(
+        self, sut, event, confirmation_service, socket_writer
+    ) -> None:
+        confirmation_service.confirm = AsyncMock(return_value=True)
+
+        await sut.exit_app(event)
+
+        socket_writer.close.assert_awaited_once()
+
 
 @pytest.mark.asyncio()
 class TestForceExit:
@@ -59,6 +75,13 @@ class TestForceExit:
 
     async def test_stops_socket_reader(self, sut, event, socket_reader) -> None:
         await sut.force_exit(event)
+
+        socket_reader.stop.assert_awaited_once()
+
+    async def test_closes_socket_writer(self, sut, event, socket_writer) -> None:
+        await sut.force_exit(event)
+
+        socket_writer.close.assert_awaited_once()
 
 
 class TestKeybind:

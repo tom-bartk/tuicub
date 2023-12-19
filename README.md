@@ -28,7 +28,7 @@
    <p align="center">
     <a href="https://tuicub.com"><strong>Website</strong></a>
     ·
-    <a href="https://github.com/tom-bartk/tuicub-server"><strong>Server</strong></a>
+    <a href="https://github.com/tom-bartk/tuicub"><strong>Server</strong></a>
   </p>
 </div>
 

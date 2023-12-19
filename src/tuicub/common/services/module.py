@@ -58,6 +58,7 @@ class ServicesModule:
         self._exit_service = ExitService(
             confirmation_service=self._confirmation_service,
             socket_reader=events_module.socket_reader,
+            socket_writer=events_module.socket_writer,
         )
         self._screen_size_service = ScreenSizeService(
             output=output,
