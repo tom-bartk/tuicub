@@ -1,6 +1,6 @@
 import pytest
-from theine import Cache
 
+from src.tuicub.common.cache import Cache
 from src.tuicub.common.logger import Logger
 from src.tuicub.common.module import CommonModule
 

@@ -5,8 +5,8 @@ from collections.abc import Callable, Hashable, Iterable, MutableSequence, Seque
 from typing import Generic, TypeVar
 
 from attrs import field, frozen
-from theine import Cache
 
+from ...common.cache import Cache
 from ...common.services.screen_size_service import ScreenSizeService
 from ..consts import TILE_WIDTH
 from ..models import ScrollDirection, Tile, Tileset

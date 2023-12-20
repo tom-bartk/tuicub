@@ -38,7 +38,7 @@ dependencies = [
   "structlog",
   "pendulum==3.0.0b1",
   "prompt-toolkit",
-  "theine",
+  "cacheout",
 ]
 
 [project.urls]

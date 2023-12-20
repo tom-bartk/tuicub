@@ -1,5 +1,6 @@
-from theine import Cache
+from cacheout import Cache as Cacheout  # type: ignore
 
+from .cache import Cache
 from .config import Config
 from .logger import Logger
 from .views.color import Theme
@@ -29,4 +30,4 @@ class CommonModule:
         self._logger: Logger = logger
 
     def cache(self) -> Cache:
-        return Cache("tlfu", 1024)
+        return Cache(cache_engine=Cacheout(maxsize=1024))

@@ -1,6 +1,6 @@
 import binpacking  # type: ignore[import]
-from theine import Cache
 
+from ...common.cache import Cache
 from ...common.services.screen_size_service import ScreenSizeService
 from ..models import Tileset
 

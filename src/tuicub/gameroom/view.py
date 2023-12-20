@@ -5,8 +5,8 @@ from typing import TYPE_CHECKING, Any
 
 from prompt_toolkit.layout import AnyContainer
 from prompt_toolkit.layout.layout import FocusableElement
-from theine import Cache
 
+from ..common.cache import Cache
 from ..common.models import User
 from ..common.screens import KeybindableElement, RootScreenView, ScreenName, TuicubScreen
 from ..common.strings import GAMEROOM_LIST_LABEL, GAMEROOM_USER_ROW_OWNER_BADGE

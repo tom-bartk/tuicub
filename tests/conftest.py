@@ -13,9 +13,9 @@ from prompt_toolkit.key_binding import KeyPressEvent
 from prompt_toolkit.layout import Window
 from prompt_toolkit.output import Output
 from pydepot import Store
-from theine import Cache
 
 from src.tuicub.app.state import AppState
+from src.tuicub.common.cache import Cache
 from src.tuicub.common.config import Config
 from src.tuicub.common.confirmation import ConfirmationService
 from src.tuicub.common.confirmation.module import ConfirmationModule
