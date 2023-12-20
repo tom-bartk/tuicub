@@ -151,7 +151,7 @@ class TestLogAction:
             sut.log_action(action)
 
             mock_log.info.assert_called_once_with(
-                "action_dispatch", name="MockAction", foo=42
+                "action_dispatch", action_name="MockAction", foo=42
             )
 
     def test_when_not_debug__does_not_log(self, create_sut, mock_log) -> None:
