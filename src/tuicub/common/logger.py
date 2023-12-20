@@ -54,7 +54,7 @@ class Logger:
         if has(type(action)):
             params = asdict(action, retain_collection_types=False)  # type: ignore
 
-        log.info("action_dispatch", name=action_name, **params)
+        log.info("action_dispatch", action_name=action_name, **params)
 
     def log_http_request(self, request: httpx.Request) -> None:
         """Log an http request."""

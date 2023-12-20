@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import pathlib
+import tempfile
 
 from .common.config import Config
 from .tuicub import run
@@ -47,13 +48,15 @@ def main() -> int:
         type=int,
         default="23432",
     )
+
+    default_logfile = pathlib.Path(tempfile.gettempdir()) / "tuicub.log"
     parser.add_argument(
         "--logfile",
         help="If debug is enabled, write logs to file at this path.",
         action="store",
         required=False,
         metavar="PATH",
-        default="/tmp/tuicub.log",
+        default=default_logfile,
         type=pathlib.Path,
     )
     parser.add_argument(
